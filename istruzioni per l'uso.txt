@@ -1,0 +1,13 @@
+docker build -t onemarcfifty/kali-linux --build-arg DESKTOP_ENVIRONMENT=xfce --build-arg REMOTE_ACCESS=rdp  --build-arg KALI_PACKAGE=default  --build-arg RDP_PORT=13389     --build-arg VNC_PORT=5908    --build-arg VNC_DISPLAY=8    --build-arg SSH_PORT=20022  .
+
+ 
+docker create   --name kali-linux --network default  -p 13389:13389 -p 5908:5908  -p 20022:20022 -t  -v kaliuser_data:/home/kaliuser  onemarcfifty/kali-linux
+ 
+docker start kali-linux
+
+dopo di che, puoi aprire l'app remote desktop di windows e connetterti in rdp su 127.0.0.1:13389 
+ 
+username e password sono: kaliuser  onemarcfifty
+il tool si chiama wapiti, puoi aprire una qualsiasi console e scrivere wapiti -u https://dafne.rextart.com
+il report lo trovi in /.wapiti/_generated_report (io apro console, lancio cd .wapiti e poi open . per avere l'interfaccia)
+ricorda di cancellare i report prima di farne uno nuovo
